@@ -1,15 +1,17 @@
-import React from "react";
+import React from 'react';
 
-// 
-// ADD A MATERIAL UI STYLE TO THE STRIKETHROUGH LATER
-// This is the component handing the ToDo functionality. This basically handles the strikethrough function so that we can later delete it
+const ToDo = ({todo, handleToggle}) => {
 
-const ToDo = ({todo}) => {
-  return (
-    <div className={todo.complete ? "strike": ""}>
- {todo.task}
-    </div>
-  );
+    const handleClick = (e) => {
+        e.preventDefault()
+        handleToggle(e.currentTarget.id)
+    }
+
+    return (
+        <div id={todo.id} key={todo.id + todo.task} name="todo" value={todo.id} onClick={handleClick} className={todo.complete ? "todo strike" : "todo"}>
+            {todo.task}
+        </div>
+    );
 };
 
 export default ToDo;
