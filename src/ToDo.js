@@ -1,14 +1,13 @@
 import React from "react";
 
+// 
+// ADD A MATERIAL UI STYLE TO THE STRIKETHROUGH LATER
 // This is the component handing the ToDo functionality. This basically handles the strikethrough function so that we can later delete it
 
-const ToDo = (props) => {
+const ToDo = ({todo}) => {
   return (
-    <div
-      style={props.todo.completed ? { textDecoration: "line-through" } : null}
-      onClick={() => props.handleToggleComplete(props.todo.id)}
-    >
-      {props.todo.task}
+    <div className={todo.complete ? "strike": ""}>
+ {todo.task}
     </div>
   );
 };

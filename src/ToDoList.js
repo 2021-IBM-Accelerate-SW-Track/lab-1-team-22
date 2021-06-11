@@ -1,16 +1,15 @@
 import React from "react";
-import ToDo from "./ToDo";
+import ToDo from './ToDo'
 
-const TodoList = (props) => {
+const TodoList = ({todoList, handleToggle, handleFilter}) => {
   return (
     <div>
-      {props.todos.map((todo) => (
-        <ToDo
-          handleToggleComplete={props.handleToggleComplete}
-          key={todo.id}
-          todo={todo}
-        />
-      ))}
+        {todoList.map(todo => {
+            return (
+                <ToDo todo={todo}  handleToggle={handleToggle} handleFilter={handleFilter}/>
+            )
+        })}
+        <button onClick={handleFilter}>Clear Completed Tasks</button>
     </div>
   );
 };

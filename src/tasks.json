@@ -1,0 +1,81 @@
+[{
+    "id": 1,
+    "task": "Wash the car",
+    "complete": false
+  }, {
+    "id": 2,
+    "task": "Wash the dog",
+    "complete": false
+  }, {
+    "id": 3,
+    "task": "Finish Project",
+    "complete": false
+  }, {
+    "id": 4,
+    "task": "Go grocery shopping",
+    "complete": false
+  }, {
+    "id": 5,
+    "task": "Change batteries in smoke detector",
+    "complete": false
+  }, {
+    "id": 6,
+    "task": "Put gas in car",
+    "complete": false
+  }, {
+    "id": 7,
+    "task": "Pay Spotify bill",
+    "complete": false
+  }, {
+    "id": 8,
+    "task": "Pay phone bill",
+    "complete": false
+  }, {
+    "id": 9,
+    "task": "Finish watching MCU",
+    "complete": true
+  }, {
+    "id": 10,
+    "task": "Create Barnes & Noble budget",
+    "complete": false
+  }, {
+    "id": 11,
+    "task": "Ignore Barnes & Noble budget",
+    "complete": true
+  }, {
+    "id": 12,
+    "task": "Remember to eat",
+    "complete": false
+  }, {
+    "id": 13,
+    "task": "Try to get through Snoop Dog ipsum without laughing",
+    "complete": false
+  }, {
+    "id": 14,
+    "task": "Search for other unique ipsums",
+    "complete": false
+  }, {
+    "id": 15,
+    "task": "Stop procrastinating",
+    "complete": false
+  }, {
+    "id": 16,
+    "task": "Vacuum floor",
+    "complete": false
+  }, {
+    "id": 17,
+    "task": "Clean house",
+    "complete": false
+  }, {
+    "id": 18,
+    "task": "And other domestic tasks",
+    "complete": false
+  }, {
+    "id": 19,
+    "task": "That aren't as fun as programming",
+    "complete": false
+  }, {
+    "id": 20,
+    "task": "But are necessary for survival 🤷‍♀️",
+    "complete": false
+  }]
