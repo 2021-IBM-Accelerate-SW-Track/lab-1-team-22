@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import { useForm } from 'react-hook-form'
 
 const TodoForm = ({ addTask }) => {
@@ -28,20 +30,3 @@ const TodoForm = ({ addTask }) => {
 };
 export default TodoForm;
 
-// const TodoForm = props => {
-//   return (
-//     <form>
-//       <input
-//         onChange={props.handleTodoChange}
-//         type="text"
-//         name="todo"
-//         value={props.value}
-//         placeholder="...todo"
-//       />
-//       <button onClick={props.handleAddTodo}>Add Todo</button>
-//       <button onClick={props.handleClearTodos}>Clear Completed</button>
-//     </form>
-//   );
-// };
-
-// export default TodoForm;
