@@ -4,7 +4,7 @@ import ToDo from './ToDo'
 import Moment from 'react-moment';
 // import 'moment-timezone';
 
- const newAddTime = Date.now()
+ //const newAddTime = Date.now()
 const TodoList = ({todoList, handleToggle, handleFilter}) => {
   return (
     <div>

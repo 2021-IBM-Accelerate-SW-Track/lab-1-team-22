@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import tasks from './tasks.json'
 import TodoList from './ToDoList'
 import TodoForm from './ToDoForm'
-import "./styles.css";
+import "./App.css";
  
 import './App.css';
  
