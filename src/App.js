@@ -1,39 +1,86 @@
-import React, { useState } from 'react';
-import tasks from './tasks.json'
-import TodoList from './ToDoList'
-import TodoForm from './ToDoForm'
- 
-import './App.css';
- 
-function App() {
-  const [ todoList, setTodoList ] = useState(tasks)
+import React, { Component } from 'react';
 
-  const handleToggle = (id) => {
-    let mapped = todoList.map(task => {
-      return task.id === Number(id) ? { ...task, complete: !task.complete } : { ...task};
+class App extends Component{
+  constructor(props){
+    super(props);
+
+    this.state = {
+      newItem: "",
+      list:[]
+    }
+  }
+
+  updateInput(key, value){
+    this.setState({
+      [key]: value
     });
-    setTodoList(mapped);
   }
 
-  const handleFilter = () => {
-    let filtered = todoList.filter(task => {
-      return !task.complete;
+  addItem(){
+    const newItem={
+      id: 1+ Math.random(),
+      value: this.state.newItem.slice()
+    };
+    const list = [...this.state.list];
+
+    list.push(newItem);
+
+    this.setState({
+    list,
+    newItem:""      
     });
-    setTodoList(filtered);
+    }
+
+    deleteItem(id){   //add console log//
+      const list = [...this.state.list];
+
+      const updatedList = list.filter(item => item.id !== id);
+
+      this.setState({list: updatedList});
+    }
+  
+  render(){
+    return(
+      <div className = "App">
+        <div>
+          Add an item...
+          <br/>
+          <input
+          type = "text"
+          placeholder = "Type item here..."
+          value = {this.state.newItem}
+          onChange={e => this.updateInput("newItem", e.target.value)}
+        />
+        <button
+        onClick={() => this.addItem()}
+        >
+          Add
+          </button>
+
+          <br/>
+
+<ul>
+  {this.state.list.map(item=>{
+    return(
+      <li key={item.id}>
+        {item.value}
+        <button
+        onClick={() => this.deleteItem(item.id)}
+
+        >
+          X
+
+        </button>
+        </li>
+    )
+  })
+  }
+  </ul> 
+         </div>
+
+      </div>
+    );
+  }
   }
 
-  const addTask = (userInput ) => {
-    let copy = [...todoList];
-    copy = [...copy, { id: todoList.length + 1, task: userInput, complete: false }];
-    setTodoList(copy);
-  }
-
- return (
-   <div className="App">
-       <TodoList todoList={todoList} handleToggle={handleToggle} handleFilter={handleFilter}/>
-      <TodoForm addTask={addTask}/>
-   </div>
- );
-}
- 
 export default App;
