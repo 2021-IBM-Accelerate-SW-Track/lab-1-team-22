@@ -4,8 +4,6 @@ import TodoList from './ToDoList'
 import TodoForm from './ToDoForm'
 import "./App.css";
  
-import './App.css';
- 
 function App() {
   const [ todoList, setTodoList ] = useState(tasks)
 
@@ -28,11 +26,6 @@ function App() {
     copy = [...copy, { id: todoList.length + 1, task: userInput, complete: false }];
     setTodoList(copy);
   }
-
-  //Testing date function
-
-
-  //End of testing date function
 
  return (
    <div className="App">
