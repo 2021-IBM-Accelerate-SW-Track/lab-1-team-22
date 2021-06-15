@@ -21,10 +21,11 @@ const TodoForm = ({ addTask }) => {
         onChange={handleChange}
         type="text"
         name="todo"
+        id="new-item-input"
         value={userTask}
         placeholder="Add a new Task"
       />
-      <button data-testid="new-item-button"> Submit</button>
+      <button id="new-item-button" data-testid="new-item-button"> Submit</button>
     </form>
   );
 };
