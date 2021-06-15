@@ -1,10 +1,21 @@
 import React, { useState } from "react";
 //import { useForm } from 'react-hook-form'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import { Input } from '@material-ui/core';
+
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+  }
+});
 
 
 
 const TodoForm = ({ addTask }) => {
   const [userTask, setUserTask] = useState("");
+  const classes = useStyles();
 
   const handleChange = (e) => {
     setUserTask(e.currentTarget.value);
@@ -17,16 +28,20 @@ const TodoForm = ({ addTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <form className={classes.root} onSubmit={handleSubmit}>
+      <Input
       data-testid="new-item-input"
         onChange={handleChange}
-        type="text"
+        type="input"
         name="todo"
         value={userTask}
         placeholder="Add a new Task"
       />
-      <button data-testid="new-item-button"> Submit</button>
+      <Button 
+      variant="outlined" 
+      color="primary"
+      type="submit"
+      data-testid="new-item-button">Submit</Button>
     </form>
   );
 };
