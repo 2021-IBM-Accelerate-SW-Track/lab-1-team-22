@@ -1,97 +1,67 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import tasks from './tasks.json'
+import TodoList from './ToDoList'
+import TodoForm from './ToDoForm'
+import "./App.css";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
-class App extends Component {
-    constructor(props) {
-        super(props);
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+  },
+ 
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
 
-        this.state = {
-            newItem: "",
-            list: []
-        }
-    }
+ 
+function App() {
 
-    updateInput(key, value) {
-        this.setState({
-            [key]: value
-        });
-    }
+  const classes = useStyles()
+  const [ todoList, setTodoList ] = useState(tasks)
 
-    addItem() {
-        const newItem = {
-            id: 1 + Math.random(),
-            value: this.state.newItem.slice()
-        };
-        const list = [...this.state.list];
+  const handleToggle = (id) => {
+    let mapped = todoList.map(task => {
+      return task.id === Number(id) ? { ...task, complete: !task.complete } : { ...task};
+    });
+    setTodoList(mapped);
+  }
 
-        list.push(newItem);
+  const handleFilter = () => {
+    let filtered = todoList.filter(task => {
+      return !task.complete;
+    });
+    setTodoList(filtered);
+  }
 
-        console.log('New item added');
+  const addTask = (userInput ) => {
+    let copy = [...todoList];
+    copy = [...copy, { id: todoList.length + 1, task: userInput, complete: false }];
+    setTodoList(copy);
+  }
 
-        this.setState({
-            list,
-            newItem: ""
-        });
-    }
+//Testing date function below
 
-    deleteItem(id) { 
-        const list = [...this.state.list];
-
-        const updatedList = list.filter(item => item.id !== id);
-
-        this.setState({ list: updatedList });
-        console.log('Item deleted');
-    }
-
-
-    render() {
-        const myStyle = {
-            color: "black",
-            backgroundColor: "lightblue",
-            padding: "10px",
-            fontFamily: "Arial",
-            fontSize: "36px",
-            textAlign: "center"
-        };
-
-        const myStyle2 = {
-            color: "black",
-            backgroundColor: "white",
-            padding: "10px",
-            fontFamily: "Arial",
-            fontSize: "36px",
-            textAlign: "center"
-        };
-        return (<
-            div className = "App" >
-            <div style = {myStyle}> Add an item... <br/>
-            <
-            input style = {myStyle2} type = "text"
-            placeholder = "Type item here..."
-            value = { this.state.newItem }
-            onChange = { e => this.updateInput("newItem", e.target.value) }/> 
-
-            <button onClick={()=>this.addItem()}> Add    </button>
-
-
-            <ul style = {{textAlign: "center"}}> {
-                this.state.list.map(item => {
-                    return ( <
-                        li key = { item.id } > { item.value } < button onClick = {()=>this.deleteItem(item.id)}> X </button> 
-                        </li >
-                        )
-                    })
-            } 
-            </ul> 
-
-            <body style = {myStyle}></body>
-             </div>
-
-            
-            
-           
-            </div>
-        );
-    }
+ return (
+   <Card className={classes.root} variant="outlined">
+    <CardContent>
+    <Typography className={classes.title} color="textSecondary" gutterBottom>
+   <TodoList todoList={todoList} handleToggle={handleToggle} handleFilter={handleFilter} addDate={addDate}/>
+        </Typography>
+        <CardActions>  
+        <TodoForm addTask={addTask}/>
+      </CardActions>
+   </CardContent>
+   </Card>
+ );
 }
 
 export default App;

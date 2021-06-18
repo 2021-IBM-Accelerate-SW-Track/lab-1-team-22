@@ -33,7 +33,7 @@
   }, {
     "id": 9,
     "task": "Finish watching MCU",
-    "complete": true
+    "complete": false
   }, {
     "id": 10,
     "task": "Create Barnes & Noble budget",
@@ -41,7 +41,7 @@
   }, {
     "id": 11,
     "task": "Ignore Barnes & Noble budget",
-    "complete": true
+    "complete": false
   }, {
     "id": 12,
     "task": "Remember to eat",

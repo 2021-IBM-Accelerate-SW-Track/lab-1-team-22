@@ -1,8 +1,21 @@
 import React, { useState } from "react";
-import { useForm } from 'react-hook-form'
+//import { useForm } from 'react-hook-form'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import { Input } from '@material-ui/core';
+
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+  }
+});
+
+
 
 const TodoForm = ({ addTask }) => {
   const [userTask, setUserTask] = useState("");
+  const classes = useStyles();
 
   const handleChange = (e) => {
     setUserTask(e.currentTarget.value);
@@ -13,35 +26,24 @@ const TodoForm = ({ addTask }) => {
     addTask(userTask);
     setUserTask("");
   };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <form className={classes.root} onSubmit={handleSubmit}>
+      <Input
+      data-testid="new-item-input"
         onChange={handleChange}
-        type="text"
+        type="input"
         name="todo"
         value={userTask}
         placeholder="Add a new Task"
       />
-      <button> Submit</button>
+      <Button 
+      variant="outlined" 
+      color="primary"
+      type="submit"
+      data-testid="new-item-button">Submit</Button>
     </form>
   );
 };
 export default TodoForm;
 
-// const TodoForm = props => {
-//   return (
-//     <form>
-//       <input
-//         onChange={props.handleTodoChange}
-//         type="text"
-//         name="todo"
-//         value={props.value}
-//         placeholder="...todo"
-//       />
-//       <button onClick={props.handleAddTodo}>Add Todo</button>
-//       <button onClick={props.handleClearTodos}>Clear Completed</button>
-//     </form>
-//   );
-// };
-
-// export default TodoForm;

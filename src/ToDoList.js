@@ -1,12 +1,19 @@
 import React from "react";
 import ToDo from './ToDo'
+//Testing a installation package below
+//import Moment from 'react-moment';
+// import 'moment-timezone';
+//import { Formik } from 'formik';
+
 
 const TodoList = ({todoList, handleToggle, handleFilter}) => {
   return (
     <div>
         {todoList.map(todo => {
             return (
-                <ToDo todo={todo}  handleToggle={handleToggle} handleFilter={handleFilter}/>
+                <div>
+                  <ToDo todo={todo}  handleToggle={handleToggle} handleFilter={handleFilter}/>
+                </div>
             )
         })}
         <button onClick={handleFilter}>Clear Completed Tasks</button>
