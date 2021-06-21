@@ -48,13 +48,12 @@ function App() {
     setTodoList(copy);
   }
 
-//Testing date function below
 
  return (
    <Card className={classes.root} variant="outlined">
     <CardContent>
     <Typography className={classes.title} color="textSecondary" gutterBottom>
-   <TodoList todoList={todoList} handleToggle={handleToggle} handleFilter={handleFilter} addDate={addDate}/>
+   <TodoList todoList={todoList} handleToggle={handleToggle} handleFilter={handleFilter}/>
         </Typography>
         <CardActions>  
         <TodoForm addTask={addTask}/>
